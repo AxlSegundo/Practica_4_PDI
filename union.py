@@ -1,6 +1,6 @@
 from PIL import Image, ImageChops, ImageOps
 #   Abrimos las imagenes para combinar
-Fondo_nuevo = Image.open("IMG/Piramide_Red.jpg")
+Fondo_nuevo = Image.open("IMG/imagen_comb.jpg")
 rectangulo_nombre = Image.open("IMG/imagen_con_rectangulo_nombre.jpg")
 rectangulo = Image.open("IMG/imagen_con_rectangulo.jpg")
 rectangulo.convert("L")
@@ -16,3 +16,4 @@ N_y_R = ImageChops.multiply(rectangulo_nombre.convert("RGB"),rectangulo.convert(
 Nuevo_fondo = ImageChops.add(F_y_R,N_y_R)
 # Guardamos la foto que nos ayudara con el proceso principal
 Nuevo_fondo.save("IMG/Fondo_nuevo.jpg")
+Nuevo_fondo.show()

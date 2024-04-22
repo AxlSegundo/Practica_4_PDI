@@ -45,7 +45,7 @@ merged_image.save("IMG/merged_image.jpg")
 #   Abrimos las imagenes necesarias para la combinación
 Modelo = Image.open("IMG/merged_image.jpg")
 Objeto = Image.open("IMG/objetoN.jpg")
-Fondo_nuevo = Image.open("IMG/Fondo_nuevo.jpg")
+Fondo_nuevo = Image.open("IMG/Piramide_Red.jpg")
 #   Obtenemos la diferencia entre el modelo y el objeto que queremos segmentar
 diferencia_absoluta = ImageChops.difference(Modelo,Objeto)
 #   Para poder tener mejor resultado convertimos a escala de grises
@@ -56,8 +56,8 @@ umbral=37
 mascara_bin = diferencia_absoluta.point(lambda p: 255 if p > umbral else 0)
 mascara_bin = mascara_bin.filter(ImageFilter.MinFilter(3))
 mascara_bin = mascara_bin.filter(ImageFilter.MaxFilter(5))
-
 #   Llamamos a la función encargada de unir las imagenes
 imagen_f=combinar(Objeto,Fondo_nuevo,mascara_bin)
 #   Mostramos el resultado
+imagen_f.save("IMG/imagen_comb.jpg")
 imagen_f.show()
